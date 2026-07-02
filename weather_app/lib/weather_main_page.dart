@@ -18,11 +18,10 @@ class WeatherMainPage extends StatefulWidget {
 
 class _WeatherMainPageState extends State<WeatherMainPage> {
   late Future<Map<String, dynamic>> weather;
-  String cityName = 'Mumbai';
+  String cityName = 'Greater Noida';
 
   Future<Map<String, dynamic>> getCurrentWeather() async {
     try {
-      
       final res = await http.get(
         Uri.parse(
           'https://api.openweathermap.org/data/2.5/forecast?q=$cityName&APPID=$openWeatherAPIKey',
@@ -54,8 +53,7 @@ class _WeatherMainPageState extends State<WeatherMainPage> {
         actions: [
           IconButton(
             onPressed: () {
-              setState(() {
-              });
+              setState(() {});
             },
             icon: const Icon(Icons.refresh),
           ),
@@ -87,7 +85,6 @@ class _WeatherMainPageState extends State<WeatherMainPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Main Card
-                  
                   SizedBox(
                     width: double.infinity,
                     child: Card(
@@ -104,7 +101,13 @@ class _WeatherMainPageState extends State<WeatherMainPage> {
                             padding: EdgeInsets.all(16.0),
                             child: Column(
                               children: [
-                                Text('📍$cityName',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                                Text(
+                                  '📍$cityName',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
                                 const SizedBox(height: 10),
                                 Text(
                                   '$currentTemp K',
